@@ -20,9 +20,9 @@ btn = Button(window, text="Sobre", bg="white", fg="black", command=clicked)
 
 btn.grid(column=0, row=0)
 
-messagebox.showwarning('Aviso', 'Você acaba de ser hackeado!')  #shows warning message
+#messagebox.showwarning('Aviso', 'Você acaba de ser hackeado!')  #shows warning message
 
-messagebox.showerror('pague para usar', 'Efetue o pagamento para o cpf: 123.456.789.12', font= (26))    #shows error message
+#messagebox.showerror('pague para usar', 'Efetue o pagamento para o cpf: 123.456.789.12', font= (26))    #shows error message
 
 window.mainloop()
 
