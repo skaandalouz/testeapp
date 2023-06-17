@@ -2,6 +2,7 @@ from tkinter.ttk import *
 from tkinter import *
 from tkinter import messagebox
 from playsound import playsound
+from time import strftime
 
 window = Tk()
 
@@ -29,6 +30,18 @@ window.resizable(False, False)
 # fonte e tamanho
 font=("SegoeUI", 10) 
 highlightthickness=0
+
+def mytime():
+    time_string = strftime('%H:%M:%S') # time format
+    l1.config(text=time_string)
+    l1.after(1000,mytime) # time delay of 1000 milliseconds
+
+my_font = ('times',15,'bold')
+l1=Label(window, font=my_font,)
+l1.place(x=340,y=-1)  
+
+l2=Label(window,font="arial 8 bold ",text="Horário atual:")
+l2.place(x=260,y=5)
 
 def msgaosair():
 
@@ -244,7 +257,7 @@ window.config(menu=barradeMenus)
 
 #messagebox.showerror('pague para usar', 'Efetue o pagamento para o cpf: 123.456.789.12', font= (26))    #shows error message
 
-
+mytime()
 window.mainloop()
 
 
