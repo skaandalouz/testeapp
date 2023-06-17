@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 from playsound import playsound
 from time import strftime
+import locale
 
 window = Tk()
 
@@ -15,7 +16,8 @@ window.title("skandalouz app - version 1.0.0")
 
 # tamanho da janela ao abrir app
 #window.geometry('600x200')
-window.geometry('600x350')
+#window.geometry('600x350')
+window.geometry('750x350')
 #window.geometry('1920x1080')
 
 # Cor de fundo
@@ -32,16 +34,17 @@ font=("SegoeUI", 10)
 highlightthickness=0
 
 def mytime():
-    time_string = strftime('%H:%M:%S') # time format
+    locale.setlocale(locale.LC_TIME, "pt_BR")
+    time_string = strftime('%A, %x \n  %X ') # time format
     l1.config(text=time_string)
     l1.after(1000,mytime) # time delay of 1000 milliseconds
 
-my_font = ('times',15,'bold')
-l1=Label(window, font=my_font,)
-l1.place(x=340,y=-1)  
+my_font = ('SegoeUI',12,'bold')
+l1=Label(window, font=my_font, fg="black", justify='right',state='disabled')
+l1.place(x=590,y=5)  
 
-l2=Label(window,font="arial 8 bold ",text="Horário atual:")
-l2.place(x=260,y=5)
+#l2=Label(window,font='SegoeUI',text="Horário atual:", state='disabled')
+#l2.place(x=565,y=-2)
 
 def msgaosair():
 
@@ -62,6 +65,14 @@ logo2 = logo2.subsample(15,15)
 logo3 = PhotoImage(file="imagens/jsl.png")
 logo3 = logo3.subsample(15,15)
 
+def umfig1 ():
+    
+ um1=PhotoImage(file="imagens/material.png")
+ figuraum1 = Label(window, image=um1)
+ figuraum1.place(x=300,y=300)
+
+
+
 #logo4 = PhotoImage(file="imagens/jsl2.png")
 #logo4 = logo4.subsample(15,15)
 
@@ -81,7 +92,7 @@ def update(ind):
     if ind == frameCnt:
         ind = 0
     label.configure(image=frame)
-    label.place(x=250, y=140)
+    label.place(x=470, y=140)
     window.after(60, update, ind)
 label = Label(window)
 #label.after(3000, label.destroy)
@@ -114,7 +125,8 @@ bd=1
 
 #btn.grid(column=2, row=0)
 
-# ação
+     # ação
+     
 def clear():
       vLD.set(0)
       vUM.set(0)
@@ -178,10 +190,22 @@ def visualizar():
 
      if comboUM.get() == "A066X019":
        print("Abraçadeira")
-       playsound('music/A066X019.wav')
+       #playsound('music/A066X019.wav')
+
+       a066x019=Label(window, font='corbel 20 bold', bg="black")
+       a066x019.place(x=150,y=200)
+       a066x019.config(text="Abraçadeira", fg="white")
+       a066x019.after(10000, a066x019.place_forget)
+
      elif comboUM.get() == "A066X013":
-         print("Abraçadeira Menor") 
-         playsound('music/A066X013.wav')
+       print("Abraçadeira Menor") 
+
+       #playsound('music/A066X013.wav')
+       
+       a066x013=Label(window, font='corbel 20 bold', bg="black")
+       a066x013.place(x=150,y=200)
+       a066x013.config(text="Abraçadeira menor", fg="white")
+
 
 btn_ver=Button(window, text="Visualizar",command=visualizar)
 btn_ver.place(x=25, y=155)
